@@ -13,8 +13,16 @@ shared_library('volk', 'volk.c',
 
 cython_build = custom_target(
     'cython_build',
-    output: '_volk.cython-*.so',
-    command: ['python3', 'setup.py', 'build_ext', '--inplace'],
-    depend_files: ['volk/volk.pyx', 'volk.c', 'volk.h'],
+    output: '_volk.cpython-314-x86_64-linux-gnu.so',
+    command: [
+        'python3', '-c',
+        'import os, subprocess; os.chdir("' + meson.source_root() + '"); ',
+        'subprocess.check_call(["python3", "setup.py", "build_ext", "--inplace"])'
+    ],
+    depend_files: [
+        meson.source_root() + '/volk/volk.pyx',
+        meson.source_root() + '/volk.c',
+        meson.source_root() + '/volk.h'
+    ],
     build_by_default: true
 )
