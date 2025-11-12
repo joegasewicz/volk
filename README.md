@@ -7,7 +7,9 @@ Python WSGI server
 
 - `HTTP/1.0` *Ongoing work...*
 - `HTTP/1.1` *TODO*
-
+- Run from CLI *TODO*
+- Workers *TODO*
+- Threads *TODO*
 
 
 ### Install
