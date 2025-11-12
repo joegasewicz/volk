@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 bobtail = "*"
+bobtail-cors = "*"
+bobtail-logger = "*"
+bobtail-upload = "*"
+bobtail-jinja2 = "*"
 
 [dev-packages]
 cython = "*"

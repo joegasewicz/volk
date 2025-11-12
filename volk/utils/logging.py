@@ -12,4 +12,4 @@ formatter = logging.Formatter(
 console_logger = logging.StreamHandler()
 console_logger.setFormatter(fmt=formatter)
 log.addHandler(console_logger)
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)
