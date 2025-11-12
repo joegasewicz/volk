@@ -23,5 +23,4 @@ setup(
     url="https://github.com/joegasewicz/volk",
     author="joegasewicz",
     author_email="contact@josef.digital",
-
 )

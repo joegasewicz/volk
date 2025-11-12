@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="examples/logo.png" width="400" height="400" alt="Siberia" />
+</p>
+
 # Volk
 Python WSGI server
 
