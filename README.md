@@ -1,4 +1,4 @@
 # Volk
-Python WSGI server written in C.
+Python WSGI server
 
 - `HTTP/1.0` *TODO*

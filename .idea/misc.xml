@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="sdkName" value="Python 3.13 (machine_learning-PWXRdXoO)" />
+  </component>
+  <component name="MojoSettings">
+    <option name="profiles">
+      <map>
+        <entry key="default">
+          <value>
+            <MojoSettingsProfile />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 virtualenv at ~/.local/share/virtualenvs/volk-x7d2K8h4" project-jdk-type="Python SDK" />
+</project>
