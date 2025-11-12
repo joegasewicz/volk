@@ -11,6 +11,11 @@ setup(
     packages=["volk"],
     py_modules=["volk"],
     install_requires=[],
+    entry_points={
+        "console_scripts": [
+            "volk = volk.__main__:main",
+        ],
+    },
     classifiers=[
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
