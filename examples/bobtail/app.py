@@ -1,5 +1,5 @@
 from bobtail import BobTail, AbstractRoute, Request, Response
-
+from volk import Volk, WSGIApplication
 
 class Article:
 
@@ -17,4 +17,5 @@ routes = [
 app = BobTail(routes=routes)
 
 if __name__ == "__main__":
-    app.run(port=8888)
+    volk = Volk(wsgi_application=app)
+    volk.serve()

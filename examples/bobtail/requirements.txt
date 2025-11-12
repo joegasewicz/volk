@@ -1,2 +1,3 @@
 birman==0.0.2
 bobtail==0.0.29
+-e git+https://github.com/joegasewicz/volk.git@3dece2946686ff109e72cb25f4b49b3a7d9a63b6#egg=volk
