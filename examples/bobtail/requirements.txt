@@ -1,3 +1,9 @@
 birman==0.0.2
 bobtail==0.0.29
--e git+https://github.com/joegasewicz/volk.git@3dece2946686ff109e72cb25f4b49b3a7d9a63b6#egg=volk
+bobtail-cors==0.0.1
+bobtail-jinja2==0.0.2
+bobtail-logger==0.0.1
+bobtail-upload==0.0.1
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+-e git+https://github.com/joegasewicz/volk.git@a0adbfc7a0f68b0d5dac685b173ec0a4a48f49e9#egg=volk
