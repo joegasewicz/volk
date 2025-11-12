@@ -1,28 +1,27 @@
-import os
+from setuptools import setup
 
-from pygments.lexers.sql import language_re
-from setuptools import setup, Extension
-from Cython.Build import cythonize
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-ext = Extension(
-    name="volk._volk",
-    sources=[
-        "volk/volk.pyx",
-        "volk.c",
-    ],
-    include_dirs=[here],
-    extra_compile_args=[],
-    extra_link_args=[],
-    language="c",
-)
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="volk",
     version="0.0.1",
-    description="Python bindings for volk C library",
+    description="WSGI Server",
     packages=["volk"],
-    package_data={"volk": ["*.pxd", "*.pyx", "py.typed"]},
-    ext_modules=cythonize([ext], language_level=3),
+    py_modules=["volk"],
+    install_requires=[],
+    classifiers=[
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/joegasewicz/volk",
+    author="joegasewicz",
+    author_email="contact@josef.digital",
+
 )

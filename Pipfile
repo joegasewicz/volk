@@ -8,9 +8,10 @@ bobtail = "*"
 
 [dev-packages]
 cython = "*"
-setuptools = "*"
 wheel = "*"
 pytest = "*"
+setuptools = "*"
+twine = "*"
 
 [requires]
 python_version = "3.14"
