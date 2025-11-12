@@ -5,9 +5,22 @@
 # Volk
 Python WSGI server
 
+- `HTTP/1.0` *Ongoing work...*
+- `HTTP/1.1` *TODO*
+
+
+
 ### Install
 ```bash
 pip install volk 
 ```
 
-- `HTTP/1.0` *TODO*
+### Setup
+
+```python
+from volk import Volk
+
+if __name__ == "__main__":
+    volk = Volk(wsgi_application=app)
+    volk.serve() 
+```
