@@ -18,9 +18,12 @@ pip install volk
 ### Setup
 
 ```python
+from flask import Flask  # Or any other WSGI application framework
 from volk import Volk
 
+flask_app = Flask(__name__)
+
 if __name__ == "__main__":
-    volk = Volk(wsgi_application=app)
+    volk = Volk(wsgi_application=flask_app)
     volk.serve() 
 ```
