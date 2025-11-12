@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "930e8dd63ce921904a55338d47d1abc9a3c321f6738cc43cad4aa8746f848052"
+            "sha256": "8f110a0a01e8611c3e936b948eab2687514c3cf8cf6f264f959e2e6beae1eafd"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,7 +16,23 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "birman": {
+            "hashes": [
+                "sha256:277d94226f210c71ae02e0c97ab168ceff2b58fd41a49ae1437dab5f074545b6",
+                "sha256:a9b61576a4d8adde0eab5784b1c7f73de75d4dfef04b36f0913d82cca0d1e7d0"
+            ],
+            "version": "==0.0.2"
+        },
+        "bobtail": {
+            "hashes": [
+                "sha256:1eff80e175ccb8feb82cecd99693e8d6c941b0fdbe03eb249f3f67b063a9a8b4",
+                "sha256:88ada04bdc3a7d0f3dc411999a91cf941d87f30d0eaeb9288398ebf6512fe85a"
+            ],
+            "index": "pypi",
+            "version": "==0.0.28"
+        }
+    },
     "develop": {
         "cython": {
             "hashes": [
