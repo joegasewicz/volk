@@ -1,13 +1,14 @@
+import io
 import os
 import sys
 import socket
 
 from volk.utils.logging import log
+from volk.message import RequestMessage, ResponseMessage, BaseMessage
+from volk.wsgi import WSGI
 
 
 class Volk:
-
-    wsgi_application: WSGIApplication
 
     server_running = False
 
@@ -15,16 +16,7 @@ class Volk:
 
     port = 8888
 
-    status: int
-
-    environ = {
-        "wsgi.input": sys.stdin.buffer,
-        "wsgi.errors": sys.stderr,
-        "wsgi.version": (1, 0),
-        "wsgi.multithread": False,
-        "wsgi.multiprocess": False,
-        "wsgi.run_once": True,
-    }
+    request_message: BaseMessage
 
     def __init__(self, *, wsgi_application = None):
         self.wsgi_application = wsgi_application
@@ -40,21 +32,39 @@ class Volk:
             while True:
                 conn, addr = s.accept()
                 with conn:
-                    data = conn.recv(1024)
-                    if not data:
-                        break
-                    log.debug(f"Client data: {data}")
-                    # Update environ
-                    self.environ["PATH_INFO"] = "/"
-                    self.environ["REQUEST_METHOD"] = "GET"
-                    self.environ["QUERY_STRING"] = ""
-                    result = self.wsgi_application(self.environ, self.start_response)
-                    log.debug(f"result: {result}")
-                    byte_data = b"HTTP/1.1 " + str(self.status).encode("utf-8") + b"OK\r\n"
-                    byte_data += b"Content-Type: text/html; charset=utf-8\r\n"
-                    byte_data += b"Content-Length: 1000\r\n\r\n"
-                    byte_data += result[0]
-                    conn.sendall(byte_data)
+                    while True:
+                        # Stay in bytes until WSGI section
+                        byte_stream: bytes = conn.recv(1024)
+                        if not byte_stream:
+                            break
+                        # Get request method
+                        wsgi = WSGI()
+                        self.request_message = RequestMessage(byte_stream=byte_stream)
+                        method, byte_stream = self.request_message.get_method()
+                        path, byte_stream = self.request_message.get_path(byte_stream=byte_stream)
+                        version, byte_stream = self.request_message.get_version(byte_stream=byte_stream)
+
+                        # Only convert bytes to strings for WSGI at this point
+                        path = path.decode("ascii")
+                        method = method.decode("ascii")
+                        version = version.decode("ascii")
+
+                        # Update WSGI environ
+                        wsgi.environ["PATH_INFO"] = path
+                        wsgi.environ["REQUEST_METHOD"] = method
+                        wsgi.environ["SERVER_PROTOCOL"] = version
+                        wsgi.environ["SERVER_PORT"] = self.port
+                        wsgi.environ["wsgi.input"] = io.BytesIO(b"")
+
+                        result = self.wsgi_application(wsgi.environ, self.start_response)
+
+                        # Response
+                        log.debug(f"result: {result}")
+                        byte_stream = b"HTTP/1.1 " + str(self.status).encode("utf-8") + b"OK\r\n"
+                        byte_stream += b"Content-Type: text/html; charset=utf-8\r\n"
+                        byte_stream += b"Content-Length: 1000\r\n\r\n"
+                        byte_stream += result[0]
+                        conn.sendall(byte_stream)
 
     def start_response(self, status, response_headers, exec_info=None):
         self.status = status
