@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="volk",
-    version="0.0.3",
+    version="0.0.4",
     description="WSGI Server",
     packages=["volk"],
     py_modules=["volk"],
