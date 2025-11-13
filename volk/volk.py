@@ -36,10 +36,10 @@ class Volk:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((self.host, self.port))
             s.listen(1)
-            conn, addr = s.accept()
-            with conn:
 
-                while True:
+            while True:
+                conn, addr = s.accept()
+                with conn:
                     data = conn.recv(1024)
                     if not data:
                         break
