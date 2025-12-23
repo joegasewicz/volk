@@ -19,3 +19,6 @@ Work in progress, please call back soon...
 - Observability *TODO*
 - Performance & Scalability *TODO*
 - Clients *TODO*
+
+
+Inspired by Libevent.
