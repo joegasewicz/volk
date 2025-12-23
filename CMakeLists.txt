@@ -3,4 +3,9 @@ project(volk C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(volk main.c)
+add_executable(
+        volk
+        main.c
+        event.h
+        event.c
+)
