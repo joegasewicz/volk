@@ -19,7 +19,7 @@ pub fn main() !void {
     var addr = posix.sockaddr.in{
         .family = posix.AF.INET,
         .port = std.mem.nativeToBig(u16, 8086),
-        .addr = 0,                 // ← FIXED (0.0.0.0)
+        .addr = 0,
         .zero = .{0} ** 8,
     };
 
